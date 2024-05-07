@@ -21,9 +21,9 @@ app.get('/Laptops', async (req, res) => {
     }
 
     try {
-        const resp = await axios.get(contacts, { headers });
+        const resp = await axios.get(Laptops, { headers });
         const data = resp.data.results;
-        res.render('contacts', { title: 'Contacts | HubSpot APIs', data });      
+        res.render('Laptops', { title: 'Laptops | HubSpot APIs', data });      
     } catch (error) {
         console.error(error);
     }
@@ -34,18 +34,18 @@ app.get('/update', async (req, res) => {
     // http://localhost:3000/update?Name=HP
     const Name = req.query.name;
 
-    const getContact = `https://api.hubapi.com/crm/v3/objects/Laptops/$Name?idProperty=Name&properties=Name,Price`;
+    const getLaptop = `https://api.hubapi.com/crm/v3/objects/Laptops/$Name?idProperty=Name&properties=Name,Price`;
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     };
 
     try {
-        const response = await axios.get(getContact, { headers });
+        const response = await axios.get(getLaptop, { headers });
         const data = response.data;
 
         // res.json(data);
-        res.render('update', {userEmail: data.properties.email, favoriteBook: data.properties.favorite_book});
+        res.render('update', {LaptopName: data.properties.Name, Price: data.properties.Price});
         
     } catch(err) {
         console.error(err);
@@ -59,15 +59,15 @@ app.post('/update', async (req, res) => {
         }
     }
 
-    const email = req.query.email;
-    const updateContact = `https://api.hubapi.com/crm/v3/objects/Laptops`;
+    const Name = req.query.Name;
+    const updateLaptop = `https://api.hubapi.com/crm/v3/objects/Laptops`;
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
     };
 
     try { 
-        await axios.patch(updateContact, update, { headers } );
+        await axios.patch(updateLaptop, update, { headers } );
         res.redirect('back');
     } catch(err) {
         console.error(err);
