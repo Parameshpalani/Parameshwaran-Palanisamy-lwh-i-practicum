@@ -31,10 +31,10 @@ app.get('/contacts', async (req, res) => {
 });
 
 app.get('/update', async (req, res) => {
-    // http://localhost:3000/update?email=rick@crowbars.net
-    const email = req.query.email;
+    // http://localhost:3000/update?Name=HP
+    const Name = req.query.name;
 
-    const getContact = `https://api.hubapi.com/crm/v3/objects/contacts/${email}?idProperty=email&properties=email,favorite_book`;
+    const getContact = `https://api.hubapi.com/crm/v3/objects/Laptops/$Name?idProperty=Name&properties=Name,Price`;
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
