@@ -12,9 +12,9 @@ app.use(express.json());
 
 const PRIVATE_APP_ACCESS = "";
 
-app.get('/contacts', async (req, res) => {
+app.get('/Laptops', async (req, res) => {
 
-    const contacts = 'https://api.hubspot.com/crm/v3/objects/contacts';
+    const contacts = 'https://api.hubspot.com/crm/v3/objects/Laptops';
     const headers = {
         Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
         'Content-Type': 'application/json'
