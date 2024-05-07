@@ -1,5 +1,3 @@
-//- ** This is a sample of a pug template and how it uses the data passed to it from index.js.
-
 
 doctype html
 html(lang="en")
@@ -8,8 +6,8 @@ html(lang="en")
         link(rel="stylesheet", href="/css/style.css")
     body
         .form-wrapper
-            p Custom Object: #{Name}
-            p Laptop: #{Price}
+            p Laptop: #{Name}
+            p Price: #{Price}
             form(method="POST")
                 label(for="newVal") Price
                 input(type="text" name="newVal" required)
